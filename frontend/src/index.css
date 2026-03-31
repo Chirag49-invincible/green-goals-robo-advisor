@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --green-primary: #16a34a;
+    --green-light: #22c55e;
+    --green-dark: #14532d;
+    --bg-dark: #050f0a;
+    --bg-card: #0c1f14;
+    --border: rgba(34, 197, 94, 0.15);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: #050f0a;
+    color: #e2e8f0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(34, 197, 94, 0.25);
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #0c1f14; }
+  ::-webkit-scrollbar-thumb { background: #166534; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #16a34a; }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(12, 31, 20, 0.7);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+  }
+
+  .green-glow {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #22c55e, #86efac);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .step-active {
+    background: linear-gradient(135deg, rgba(22,163,74,0.2), rgba(34,197,94,0.1));
+    border-color: rgba(34, 197, 94, 0.4);
+  }
+
+  .btn-primary {
+    @apply bg-forest-600 hover:bg-forest-500 text-white font-medium px-6 py-3 rounded-xl transition-all duration-200 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-forest-800 hover:border-forest-600 text-forest-400 hover:text-forest-300 font-medium px-6 py-3 rounded-xl transition-all duration-200;
+  }
+
+  .input-field {
+    @apply bg-forest-950/50 border border-forest-900/60 focus:border-forest-600 text-slate-200 rounded-xl px-4 py-3 w-full outline-none transition-colors placeholder-slate-600;
+  }
+
+  .score-ring {
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #0c1f14 25%, #1a3a24 50%, #0c1f14 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes number-count {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-number { animation: number-count 0.6s ease-out forwards; }
